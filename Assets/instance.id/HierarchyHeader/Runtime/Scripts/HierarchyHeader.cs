@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -20,7 +21,9 @@ namespace instance.id.HierarchyHeader
         static HierarchyHeaderSettings hhSettings;
         static readonly List<GUIStyle> styleData = new List<GUIStyle>();
         private static string hhPath;
-
+        private static Texture2D texWarning => EditorGUIUtility.FindTexture("winbtn_mac_close@2x");
+        private static Texture2D texOk => EditorGUIUtility.FindTexture("winbtn_mac_max@2x");
+ 
         // @formatter:off --------------------------- SelectSettingsObject
         // -- Main menu item to select and configure AAI settings       --
         // -- SelectSettingsObject ---------------------------------------
@@ -97,10 +100,57 @@ namespace instance.id.HierarchyHeader
                 {
                     if (hierarchyItem == null || !hierarchyItem.name.StartsWith(hhSettings.settingsDatas[i].headerPrefix, StringComparison.Ordinal)) continue;
 
-                    EditorGUI.DrawRect(selectionRect, hhSettings.settingsDatas[i].BackgroundColor);
-                    EditorGUI.LabelField(selectionRect, hierarchyItem.name.Replace(hhSettings.settingsDatas[i].characterStrip, "").ToUpperInvariant(), styleData[i]);
+                    var rect = new Rect(selectionRect.x+16, selectionRect.y, selectionRect.width-32, selectionRect.height);
+                    EditorGUI.DrawRect(rect, hhSettings.settingsDatas[i].BackgroundColor);
+                    EditorGUI.LabelField(rect, hierarchyItem.name.Replace(hhSettings.settingsDatas[i].characterStrip, "").ToUpperInvariant(), styleData[i]);
+                    ValidateHierarchy(hierarchyItem, selectionRect);
                 }
         }
+
+        private static void ValidateHierarchy(GameObject root, Rect selectionRect)
+        {
+            var subHierarchy = new HashSet<GameObject>();
+            GetChildren(root,ref subHierarchy);
+
+            var result = ValidateComponents(subHierarchy);
+            var tex = result ? texOk : texWarning;
+            GUI.DrawTexture(new Rect(selectionRect.xMax - 16, selectionRect.yMin, 16, 16), tex);
+        }
+
+        private static bool ValidateComponents(IEnumerable<GameObject> subHierarchy)
+        {
+            var bindingFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+
+            foreach (var gameObject in subHierarchy)
+            {
+                foreach (var component in gameObject.GetComponents<MonoBehaviour>())
+                {
+                    foreach (var fieldInfo in component.GetType().GetFields(bindingFlags))
+                    {
+                        if (fieldInfo.IsNull(component))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        // ----------------------------------------------------------------------------- GetChildren
+        // -- Load all children recursively                                                        --
+        // -- GetChildren --------------------------------------------------------------------------
+        //TODO better cache and check for changes
+        private static void GetChildren(GameObject gameObject, ref HashSet<GameObject> children)
+        {
+            children.Add(gameObject);
+            for (var i = 0; i < gameObject.transform.childCount; i++)
+            {
+                var child = gameObject.transform.GetChild(i);
+                GetChildren(child.gameObject, ref children);
+            }
+        } 
 
         private static void Assignments()
         {
@@ -118,7 +168,8 @@ namespace instance.id.HierarchyHeader
             hhSettings = AssetDatabase.FindAssets($"t:{hhConfigurationType}")
                 .Select(guid => AssetDatabase.LoadAssetAtPath<HierarchyHeaderSettings>(AssetDatabase.GUIDToAssetPath(guid)))
                 .FirstOrDefault();
-
+            
+            
             if (!(hhSettings is null)) Assignments();
             else
             {

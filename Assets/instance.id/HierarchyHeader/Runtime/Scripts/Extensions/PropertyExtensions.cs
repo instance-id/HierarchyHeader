@@ -162,5 +162,11 @@ namespace instance.id.HierarchyHeader
                 return targetObjectType;
             }
         }
+        
+        public static bool IsNull(this FieldInfo fieldInfo, MonoBehaviour component)
+        {
+            return fieldInfo.GetValue(component) == null ||
+                   fieldInfo.GetValue(component) != null && fieldInfo.GetValue(component).Equals(null);
+        }
     }
 }
