@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.jeffcampbellmakesgames.packagetools": {
+      "version": "https://github.com/jeffcampbellmakesgames/unity-package-tools.git#release/stable",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "32a2d178b56f4dcddf5d053e29f2ba584eafdbcf"
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
