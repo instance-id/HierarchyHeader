@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.jeffcampbellmakesgames.packagetools" : "https://github.com/jeffcampbellmakesgames/unity-package-tools.git#release/stable",
+    "com.gameframe.packages": "https://github.com/coryleach/UnityPackages.git#1.0.2",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ide.rider": "1.1.4",
     "com.unity.ide.vscode": "1.2.1",
@@ -8,6 +8,7 @@
     "com.unity.textmeshpro": "2.1.1",
     "com.unity.timeline": "1.2.16",
     "com.unity.ugui": "1.0.0",
+    "com.unity.upm.develop": "https://github.com/ErnSur/com.unity.upm.develop.git",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

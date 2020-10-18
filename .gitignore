@@ -96,3 +96,19 @@ ProjectSettings/UnityConnectSettings.asset
 ProjectSettings/VFXManager.asset
 
 ProjectSettings/XRSettings.asset
+
+*.tgz
+
+deploy.ps1
+
+unzip.ps1
+
+com.id.instance.hierarchyheader.csproj.DotSettings
+
+com.id.instance.hierarchyheader.Editor.csproj.DotSettings
+
+package/
+
+com.id.instance.hierarchyheader/
+
+2/

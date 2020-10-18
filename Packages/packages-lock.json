@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "com.jeffcampbellmakesgames.packagetools": {
-      "version": "https://github.com/jeffcampbellmakesgames/unity-package-tools.git#release/stable",
+    "com.gameframe.packages": {
+      "version": "https://github.com/coryleach/UnityPackages.git#1.0.2",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "32a2d178b56f4dcddf5d053e29f2ba584eafdbcf"
+      "hash": "66a7ad13fb40862a6bfcf5b69e407052f52c8a0d"
     },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
@@ -35,6 +35,15 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.package-validation-suite": {
+      "version": "0.7.10-preview",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "nuget.mono-cecil": "0.1.6-preview"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
@@ -72,6 +81,24 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "com.unity.upm.develop": {
+      "version": "https://github.com/ErnSur/com.unity.upm.develop.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9",
+        "nuget.mono-cecil": "0.1.6-preview",
+        "com.unity.package-validation-suite": "0.7.10-preview"
+      },
+      "hash": "0d887cda99b81194dc3b6687dda28d471b504a37"
+    },
+    "nuget.mono-cecil": {
+      "version": "0.1.6-preview",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
