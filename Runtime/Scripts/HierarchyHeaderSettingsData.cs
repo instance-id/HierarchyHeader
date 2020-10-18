@@ -20,7 +20,7 @@ namespace instance.id.HierarchyHeader
         [SerializeField] public FontStyle FontStyle = FontStyle.Bold;
         [SerializeField] public TextAnchor Alignment = TextAnchor.MiddleCenter;
         [SerializeField] public Color TextColor = new Color(0.94f, 0.94f, 0.94f);
-        [SerializeField] public Color BackgroundColor = new Color(0.1f, 0.11f, 0.11f);
+        [SerializeField] public Color BackgroundColor = new Color(0.14f, 0.14f, 0.14f);
 
         
         public HierarchyHeaderSettingsData()

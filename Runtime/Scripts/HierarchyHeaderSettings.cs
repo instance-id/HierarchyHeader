@@ -60,9 +60,13 @@ namespace instance.id.HierarchyHeader
 
         private static string DetermineAssetPath(string absolutePath)
         {
-            if (absolutePath.StartsWith(Application.dataPath)) return "Assets" + absolutePath.Substring(Application.dataPath.Length);
+            Debug.Log($"absolutePath {absolutePath}");
+            Debug.Log($"Application.dataPath {Application.dataPath}");
+
+            if (absolutePath.StartsWith(Application.dataPath)) return "Packages" + absolutePath.Substring(Application.dataPath.Length);
             else throw new ArgumentException("Full path does not contain the current project's Assets folder", nameof(absolutePath));
         }
+
 
         private string CurrentPath()
         {

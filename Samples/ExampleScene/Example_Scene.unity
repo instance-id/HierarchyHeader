@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530442885}
   m_Layer: 0
-  m_Name: 'AH_ Another Header '
+  m_Name: 'AH_  Another Header '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,7 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514435192}
   m_Layer: 0
-  m_Name: AH_ Camera
+  m_Name: AH_  Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

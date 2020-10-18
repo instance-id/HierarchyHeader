@@ -86,6 +86,7 @@ namespace instance.id.HierarchyHeader
                 styleData[i].alignment = hhSettings.settingsDatas[i].Alignment;
                 styleData[i].normal.textColor = hhSettings.settingsDatas[i].TextColor;
             }
+
             EditorApplication.RepaintHierarchyWindow();
         }
 
@@ -119,18 +120,25 @@ namespace instance.id.HierarchyHeader
                 .Select(guid => AssetDatabase.LoadAssetAtPath<HierarchyHeaderSettings>(AssetDatabase.GUIDToAssetPath(guid)))
                 .FirstOrDefault();
 
-            if (!(hhSettings is null)) Assignments();
-            else
+            if (hhSettings is null)
             {
-                var hhConfig = ScriptableObject.CreateInstance<HierarchyHeaderSettings>();
-                hhPath = hhConfig.GetLocation();
-                Object.DestroyImmediate(hhConfig);
-                var assetName = $"{hhConfigurationType}.asset";
-                var path = $"{hhPath}/HierarchyHeader/{assetName}";
-                hhSettings = ScriptableObjectExtensions.CreateAsset<HierarchyHeaderSettings>(path);
-                Assignments();
-                Debug.Log($"Creating HierarchyHeaderSettings object: {path}");
+                hhSettings = ScriptableObject.CreateInstance<HierarchyHeaderSettings>();
+                AssetDatabase.CreateAsset(hhSettings, $"Assets/{hhConfigurationType}.asset");
+                AssetDatabase.SaveAssets();
             }
+
+            //     Assignments();
+            // else
+            // {
+            // var hhConfig = ScriptableObject.CreateInstance<HierarchyHeaderSettings>();
+            // hhPath = hhConfig.GetLocation();
+            // Object.DestroyImmediate(hhConfig);
+            // var assetName = $"{hhConfigurationType}.asset";
+            // var path = $"{hhPath}/HierarchyHeader/{assetName}";
+            // hhSettings = ScriptableObjectExtensions.CreateAsset<HierarchyHeaderSettings>(path);
+            // Assignments();
+            // Debug.Log($"Creating HierarchyHeaderSettings object: {path}");
+            // }
         }
     }
 }
