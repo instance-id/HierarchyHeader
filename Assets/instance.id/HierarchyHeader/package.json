@@ -1,9 +1,9 @@
 {
-    "githubUrl": "",
+    "githubUrl": "https://github.com/instance-id/HierarchyHeader",
     "name": "com.id.instance.hierarchyheader",
     "displayName": "HierarchyHeader",
     "repositoryName": "HierarchyHeader",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Create organizational hierarchy headers",
     "type": "library",
     "unity": "2019.4",

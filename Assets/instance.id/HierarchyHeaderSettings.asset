@@ -23,6 +23,30 @@ MonoBehaviour:
     characterStrip: '-'
     FontSize: 12
     FontStyle: 1
-    Alignment: 4
+    Alignment: 5
     TextColor: {r: 0.94, g: 0.94, b: 0.94, a: 1}
     BackgroundColor: {r: 0.14, g: 0.14, b: 0.14, a: 1}
+  - m_Name: Another Header
+    headerPrefix: AH_
+    characterStrip: AH_
+    FontSize: 12
+    FontStyle: 1
+    Alignment: 3
+    TextColor: {r: 0.94, g: 0.94, b: 0.94, a: 1}
+    BackgroundColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  - m_Name: Sub Objects
+    headerPrefix: +++
+    characterStrip: +
+    FontSize: 12
+    FontStyle: 1
+    Alignment: 5
+    TextColor: {r: 0.94, g: 0.94, b: 0.94, a: 1}
+    BackgroundColor: {r: 0.25032216, g: 0.24029905, b: 0.3773585, a: 1}
+  - m_Name: One Last Header
+    headerPrefix: OLH_
+    characterStrip: OLH_
+    FontSize: 12
+    FontStyle: 1
+    Alignment: 3
+    TextColor: {r: 0, g: 0, b: 0, a: 1}
+    BackgroundColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
