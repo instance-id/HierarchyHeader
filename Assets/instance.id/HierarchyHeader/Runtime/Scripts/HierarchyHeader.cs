@@ -99,9 +99,10 @@ namespace instance.id.HierarchyHeader
                 for (var i = 0; i < hhSettings.settingsDatas.Count; i++)
                 {
                     if (hierarchyItem == null || !hierarchyItem.name.StartsWith(hhSettings.settingsDatas[i].headerPrefix, StringComparison.Ordinal)) continue;
-
-                    var rect = new Rect(selectionRect.x+16, selectionRect.y, selectionRect.width-32, selectionRect.height);
+                    
+                    var rect = new Rect(selectionRect.x+16, selectionRect.y, selectionRect.width-16, selectionRect.height);
                     EditorGUI.DrawRect(rect, hhSettings.settingsDatas[i].BackgroundColor);
+                    rect.width -= 16;
                     EditorGUI.LabelField(rect, hierarchyItem.name.Replace(hhSettings.settingsDatas[i].characterStrip, "").ToUpperInvariant(), styleData[i]);
                     ValidateHierarchy(hierarchyItem, selectionRect);
                 }
