@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 963484a7fe990ce48aec144ef994d8de
-TextScriptImporter:
+guid: d4449a482cd9e93419e0d50c8d07e468
+ScriptedImporter:
+  internalIDToNameTable: []
   externalObjects: {}
+  serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+  script: {fileID: 11500000, guid: 305d72b64a2242c0b6ff1d70a6bc89f4, type: 3}
+  name: com.id.instance.hierarchyheader
+  version: 0.0.2
+  displayName: HierarchyHeader
+  description: Create organizational hierarchy headers
+  unity: 2019.4
+  unityRelease: 1f0
+  dependencies:
+    keyValuePairs: []
+  keywords: []
+  author:
+    name: instance.id
+    email: dan@instance.id
+    url: https://instance.id
+  autoExportJson: 0
+  registryUrl: https://registry.my-company.com
