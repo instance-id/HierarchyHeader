@@ -1,19 +1,19 @@
 {
-    "githubUrl": "https://github.com/instance-id/HierarchyHeader",
-    "name": "com.id.instance.hierarchyheader",
-    "displayName": "HierarchyHeader",
-    "repositoryName": "HierarchyHeader",
-    "version": "0.0.2",
-    "description": "Create organizational hierarchy headers",
-    "type": "library",
-    "unity": "2019.4",
-    "unityRelease": "1f0",
-    "keywords": [],
-    "author": {
-        "name": "instance.id",
-        "email": "dan@instance.id",
-        "url": "https://instance.id",
-        "twitter": "instance_id",
-        "github": "instance-id"
-    }
+	"githubUrl": "https://github.com/instance-id/HierarchyHeader",
+	"name": "com.id.instance.hierarchyheader",
+	"displayName": "HierarchyHeader",
+	"repositoryName": "HierarchyHeader",
+	"version": "0.0.3",
+	"description": "Create organizational hierarchy headers",
+	"type": "library",
+	"unity": "2019.4",
+	"unityRelease": "12f1",
+	"keywords": [],
+	"author": {
+		"name": "instance.id",
+		"email": "dan@instance.id",
+		"url": "https://instance.id",
+		"twitter": "instance_id",
+		"github": "instance-id"
+	}
 }
