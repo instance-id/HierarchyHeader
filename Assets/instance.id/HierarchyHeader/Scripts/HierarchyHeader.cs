@@ -30,6 +30,28 @@ namespace instance.id.HierarchyHeader
             Selection.objects = new Object[] {HHSettings()};
         }
 
+        [UnityEditor.Callbacks.DidReloadScripts]
+        private static void CreateAssetWhenReady()
+        {
+            if (EditorApplication.isCompiling || EditorApplication.isUpdating)
+            {
+                EditorApplication.delayCall += CreateAssetWhenReady;
+                return;
+            }
+
+            EditorApplication.delayCall += DoSetup;
+        }
+
+        private static void DoSetup()
+        {
+            HHSettings();
+            SetStyleData();
+            hhSettings.NeedsUpdate.AddListener(SetStyleData);
+
+            EditorApplication.hierarchyWindowItemOnGUI -= HierarchyWindowItemOnGUI;
+            EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
+        }
+
         // @formatter:off ------------------------------------- HHSettings
         // -- Checks for existence of HierarchyHeaderSettings object    --
         // -- If not present, one is created with default settings      --
@@ -44,10 +66,6 @@ namespace instance.id.HierarchyHeader
 
         static HierarchyHeader()
         {
-            HHSettings();
-            SetStyleData();
-            hhSettings.NeedsUpdate.AddListener(SetStyleData);
-            EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
         }
 
         private static void SetStyleData()
@@ -68,21 +86,20 @@ namespace instance.id.HierarchyHeader
                 styleData[i].alignment = hhSettings.settingsDatas[i].Alignment;
                 styleData[i].normal.textColor = hhSettings.settingsDatas[i].TextColor;
             }
-
             EditorApplication.RepaintHierarchyWindow();
         }
 
         private static void HierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
             var hierarchyItem = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-            var settingList = hhSettings.settingsDatas;
-            for (var i = 0; i < settingList.Count; i++)
-            {
-                if (hierarchyItem == null || !hierarchyItem.name.StartsWith(settingList[i].headerPrefix, StringComparison.Ordinal)) continue;
+            if (!(hhSettings is null))
+                for (var i = 0; i < hhSettings.settingsDatas.Count; i++)
+                {
+                    if (hierarchyItem == null || !hierarchyItem.name.StartsWith(hhSettings.settingsDatas[i].headerPrefix, StringComparison.Ordinal)) continue;
 
-                EditorGUI.DrawRect(selectionRect, settingList[i].BackgroundColor);
-                EditorGUI.LabelField(selectionRect, hierarchyItem.name.Replace(settingList[i].characterStrip, "").ToUpperInvariant(), styleData[i]);
-            }
+                    EditorGUI.DrawRect(selectionRect, hhSettings.settingsDatas[i].BackgroundColor);
+                    EditorGUI.LabelField(selectionRect, hierarchyItem.name.Replace(hhSettings.settingsDatas[i].characterStrip, "").ToUpperInvariant(), styleData[i]);
+                }
         }
 
         private static void Assignments()
