@@ -1,0 +1,19 @@
+{
+    "name": "id.instance.hierarchyheader.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3dd24e13b194b7942b683ccf93454d8c",
+        "GUID:09e85be6e9b6f284f9072d7aae81972f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

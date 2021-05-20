@@ -1,0 +1,16 @@
+{
+    "name": "id.instance.hierarchyheader",
+    "rootNamespace": "",
+    "references": [
+        "GUID:09e85be6e9b6f284f9072d7aae81972f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

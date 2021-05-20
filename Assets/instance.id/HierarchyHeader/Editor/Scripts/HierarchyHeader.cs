@@ -15,7 +15,7 @@ namespace instance.id.HierarchyHeader
     [InitializeOnLoad]
     public static class HierarchyHeader
     {
-        private static string hhConfigurationType = "HierarchyHeaderSettings";
+        private static string hhType = "HierarchyHeaderSettings";
 
         static HierarchyHeaderSettings hhSettings;
         static readonly List<GUIStyle> styleData = new List<GUIStyle>();
@@ -116,14 +116,14 @@ namespace instance.id.HierarchyHeader
         {
             if (!(hhSettings is null)) return;
 
-            hhSettings = AssetDatabase.FindAssets($"t:{hhConfigurationType}")
+            hhSettings = AssetDatabase.FindAssets($"t:{hhType}")
                 .Select(guid => AssetDatabase.LoadAssetAtPath<HierarchyHeaderSettings>(AssetDatabase.GUIDToAssetPath(guid)))
                 .FirstOrDefault();
 
             if (hhSettings is null)
             {
                 hhSettings = ScriptableObject.CreateInstance<HierarchyHeaderSettings>();
-                AssetDatabase.CreateAsset(hhSettings, $"Assets/{hhConfigurationType}.asset");
+                AssetDatabase.CreateAsset(hhSettings, $"Assets/{hhType}.asset");
                 AssetDatabase.SaveAssets();
             }
 

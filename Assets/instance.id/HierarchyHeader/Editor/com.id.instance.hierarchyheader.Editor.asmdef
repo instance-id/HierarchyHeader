@@ -1,1 +1,0 @@
-{ "name": "com.id.instance.hierarchyheader.Editor", "references": [ "com.id.instance.hierarchyheader" ], "optionalUnityReferences": [], "includePlatforms": [ "Editor" ], "excludePlatforms": [] }
