@@ -3,7 +3,6 @@
 // -- instance.id 2020 | http://github.com/instance-id | http://instance.id  --
 // ----------------------------------------------------------------------------
 
-using System;
 using JetBrains.Annotations;
 using UnityEditor;
 using UnityEditor.UIElements;
